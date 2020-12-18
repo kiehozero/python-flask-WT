@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 
-class JobScrape:
+class JobScrape():
+   
     def __init__(self, site_name):
         """
         Having the job site in a list means we can check on initialisation and throw an error if the site is not available.
@@ -10,7 +11,8 @@ class JobScrape:
                 "url": "https://www.monster.ie/jobs/search/",
                 "query_format": "?q={keywords}&where={city}&cy={country}",
                 "results": "#ResultsContainer",
-                "not_found": ".pivot.block"}
+                "not_found": ".pivot.block", 
+                "desc_text": "[name=\"sanitizedHtml\"]"}
               },
               
              {"indeed": {
@@ -24,14 +26,44 @@ class JobScrape:
         except IndexError:
             raise ValueError(f"{site_name} is not found or not supported yet.")
 
-    def _format_monster():
-        pass
+    def _format_monster(self, results, desc):
+        """
+        Non-public method to return jobs in the given format of title, company, url, description (optional).
+        """
+
+        job_summaries = []
+
+        cards = results.find(".card-content .summary")
+        """Omits the first=true parameter so we get all results."""
+
+        for card in cards:
+            job = {}
+            job["title"] = card.find(".title a", first=True).text
+            job["company"] = card.find(".company .name", first=True).text
+            url = card.find(".title a", first=True)
+            job["url"] = url.attrs["href"]
+            if desc:
+                job["description"] = self._get_description(url.attrs["href"])
+
+            job_summaries.append(job)
+
+        return job_summaries
 
     def _format_indeed():
         pass
 
-    def _get_description():
-        pass
+    def _get_description(self, url):
+        """
+        Private function to retrieve the job description
+        """
+
+        s = HTMLSession()
+
+        r = s.get(url)
+
+        result = r.html.find(self.site_data["desc_text"], first=True)
+
+        return result.text if result else "No description available."
 
     def _scrape_site(self, city, country, keywords):
         """
