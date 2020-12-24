@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>About Us</h2>
+    <h2>{{ page_title }}</h2>
     <p>
         Bohemian Football Club (Irish: an Cumann Peile Bóihéamach), more commonly referred to as Bohemians or Bohs, is a
         professional football club from Dublin, Ireland. Bohemians compete in the Premier Division of the League of Ireland, and
@@ -29,9 +29,10 @@
 
     <div class="row featurette">
         <div class="col-md-5">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/League_of_Ireland_trophy.svg" alt="League of Ireland trophy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/League_of_Ireland_trophy.svg"
+                 alt="League of Ireland trophy">
         </div>
-        <col-md-7>
+        <div class="col-md-7">
             <h3>Honours</h3>
             <p>
                 <ul>
