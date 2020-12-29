@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-{{ company[1]["player_name"] }}
-
     <h2>{{ page_title }}</h2>
     <p>
         Bohemian Football Club (Irish: an Cumann Peile Bóihéamach), more commonly referred to as Bohemians or Bohs, is a
@@ -16,53 +14,43 @@
         32 cups claimed.
     </p>
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Stadium</h3>
-            <p>Affectionately known as Dalyer by fans, it was also historically the "home of Irish football",[1] holding many Irish
-            internationals and FAI Cup finals. It has also hosted UEFA Champions League qualifiers, UEFA Cup and UEFA Cup Winners'
-            Cup matches. However, the ground was largely undeveloped between the 1940s and the 2000s, and has now fallen out of use
-            as a major venue, except for the home games of Bohemians.</p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Bohemians-Football-Club-Dalymount-Park-Entrance-2012.JPG"
-                 alt="Dalymount Park, Dublin">
-        </div>
-    </div>
+    {% for member in company %}
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/League_of_Ireland_trophy.svg"
-                 alt="League of Ireland trophy">
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+
+            {% else %}
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+
+                <div class="col-md-7">
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+
+            {% endif %}
         </div>
-        <div class="col-md-7">
-            <h3>Honours</h3>
-            <p>
-                <ul>
-                    <li>
-                        League of Ireland Premier Division (11): 1923–24, 1927–28, 1929–30, 1933–34, 1935–36, 1974–75, 1977–78, 2000–01,
-                        2002–03, 2008, 2009
-                    </li>
-                    <li>
-                        Football Association of Ireland Challenge Cup (7): 1927–28, 1934–35, 1969–70, 1975–76, 1991–92, 2000–01, 2008
-                    </li>
-                    <li>
-                        Irish Football Assocation Challenge Cup (1): 1907-08
-                    </li>
-                    <li>
-                        League of Ireland Cup (3): 1974–75, 1978–79, 2009
-                    </li>
-                    <li>
-                        League of Ireland Shield (6): 1923–24, 1927–28, 1928–29, 1933–34, 1938–39, 1939–40
-                    </li>
-                    
-                    <li>
-                        Leinster Senior Cup (32): 1893–94, 1894–95, 1895–96, 1896–97, 1897–98, 1898–99, 1901–02, 1902–03, 1904–05, 1906–07,
-                        1909–10, 1910–11, 1911–12, 1914–15, 1915–16, 1925–26, 1927–28, 1939–40, 1946–47, 1965–66, 1966–67, 1972–73, 1974–75,
-                        1975–76, 1978–79, 1979–80, 1983–84, 1985–86, 1988–89, 1992–93, 1997–98, 2015–16
-                    </li>
-                </ul>
-            </p>
-        </col-md-7>
-    </div>
+
+        {% if loop.index != loop.length %}
+
+        <!--see List of Built-In Filters in Jinja documentation website for more information on these-->
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+        
+    {% endfor %}
+
 {% endblock %}

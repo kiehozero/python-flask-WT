@@ -1,0 +1,20 @@
+[
+    {
+        "player_name": "Ali Coote",
+        "player_position": "Midfield",
+        "image_source" : "https://e0.365dm.com/17/06/768x432/skysports-sns-dundee-united-brentford_3983370.jpg",
+        "player_bio": "Scotsman Ali began his career with Dundee United and made his first team debut in 2015, before joining Brentford in 2017. He represented Scotland at U15, U16 and U17 level."
+    },
+    {
+        "player_name" : "Ciaran Kelly",
+        "player_position" : "Defence",
+        "image_source" : "https://irishsportstv.com/wp-content/uploads/2020/01/Ciaran-Kelly-signs.jpg",
+        "player_bio" : "Ciaran Kelly (born 4 July 1998) is an Irish professional footballer who plays for NIFL Premiership club Ballymena United, on loan from League of Ireland Premier Division club Bohemians. He previously played for St Patricks Athletic, the club where he started his professional career. He has also spent one season at Drogheda United."
+    },
+    {
+        "player_name" : "Keith Buckley",
+        "player_position" : "Midfield",
+        "image_source" : "https://i2-prod.irishmirror.ie/incoming/article21498631.ece/ALTERNATES/s615/0_inpho_01585629.jpg",
+        "player_bio" : "Keith currently serves as captain of the club and led his team into their first European match in 7 years when they took on Hungarian side Fehérvár in the 2020-2021 UEFA Europa League qualifiers. Keith Buckley was named in the PFAI Team of the Year in 2020."
+    }
+]
